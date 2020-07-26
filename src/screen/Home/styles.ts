@@ -49,9 +49,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   AvatarIMG: {
-    width: '30%',
-    height: '90%',
+    width: '25%',
+    height: '80%',
     marginLeft: '3%'
+  },
+  Img: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50
   }
 });
 

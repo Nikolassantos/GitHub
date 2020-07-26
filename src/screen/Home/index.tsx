@@ -1,6 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
+import * as Linking from 'expo-linking';
 import { Text, View, TextInput, Image } from 'react-native';
 import api from '../../services/connection';
 import styles from './styles';
@@ -16,7 +17,7 @@ interface User {
 export default function Home() {
   const [user, setUser] = useState<User>();
 
-  var UserName = 'lucasmontano';
+  var UserName = 'diego3g';
 
   useEffect(() => {
     async function loadUser() {
@@ -26,6 +27,10 @@ export default function Home() {
     }
     loadUser();
   }, []);
+
+  function OpenPerfil() {
+    Linking.openURL(`${user?.html_url}`);
+  }
 
   return (
     <>
@@ -53,7 +58,7 @@ export default function Home() {
             <View style={styles.AvatarIMG}>
               <Image
                 source={{ uri: `${user?.avatar_url}` }}
-                style={{ width: '100%', height: '100%', borderRadius: 50 }}
+                style={styles.Img}
               />
             </View>
             <View
@@ -65,8 +70,15 @@ export default function Home() {
                 justifyContent: 'center'
               }}
             >
-              <View style={{ width: '90%', height: '90%' }}>
+              <View
+                style={{
+                  width: '90%',
+                  height: '80%',
+                  justifyContent: 'space-between'
+                }}
+              >
                 <Text style={{ fontSize: 17 }}>{user?.login}</Text>
+                <Text onPress={OpenPerfil}>Access repository</Text>
               </View>
             </View>
           </View>
