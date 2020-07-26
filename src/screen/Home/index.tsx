@@ -16,8 +16,9 @@ interface User {
 
 export default function Home() {
   const [user, setUser] = useState<User>();
+  const [formUser, setFormUser] = useState();
 
-  var UserName = 'diego3g';
+  var UserName = 'lucasmontano';
 
   useEffect(() => {
     async function loadUser() {
