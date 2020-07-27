@@ -3,7 +3,7 @@
 Projeto Desenvolvido com a finalidade de replicar o GitHub(WEB) para uma versão mobile .
 
 <h1 align="center">
-    <img src="https://img.icons8.com/fluent/48/000000/github.png" width="500px" />
+   <img src="https://img.icons8.com/fluent/500/000000/github.png"/>
 </h1>
 
 ## :rocket: Technologies
