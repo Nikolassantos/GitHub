@@ -1,37 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { RectButton } from 'react-native-gesture-handler';
 import * as Linking from 'expo-linking';
 import { Text, View, TextInput, Image } from 'react-native';
-import api from '../../services/connection';
 import styles from './styles';
 
-interface User {
-  login: String;
-  id: Number;
-  avatar_url: String;
-  url: String;
-  html_url: String;
-  name: String;
-}
+import user from '../../services';
 
 export default function Home({}) {
-  const [user, setUser] = useState<User>();
-
-  var UserName = 'filipedeschamps';
-
   const navigation = useNavigation();
-
-  useEffect(() => {
-    async function loadUser() {
-      const response = await api.get(`/users/${UserName}`);
-
-      setUser(response.data);
-    }
-    loadUser();
-  }, []);
 
   function OpenPerfil() {
     Linking.openURL(`${user?.html_url}`);

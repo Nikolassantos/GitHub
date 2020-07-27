@@ -4,8 +4,8 @@ import styles from './styles';
 
 const Perfil: React.FC = () => {
   return (
-    <View>
-      <View>
+    <View style={styles.Container}>
+      <View style={styles.Main}>
         <Text>Nikolas</Text>
       </View>
     </View>
