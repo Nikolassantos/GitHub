@@ -45,8 +45,10 @@ const styles = StyleSheet.create({
   repoView: {
     flexDirection: 'row',
     width: '90%',
-    height: '15%',
-    alignItems: 'center'
+    height: 110,
+    alignItems: 'center',
+    backgroundColor: '#F2F5F8',
+    borderRadius: 15
   },
   AvatarIMG: {
     width: '25%',

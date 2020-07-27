@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import { RectButton } from 'react-native-gesture-handler';
 import * as Linking from 'expo-linking';
 import { Text, View, TextInput, Image } from 'react-native';
 import api from '../../services/connection';
@@ -12,13 +14,15 @@ interface User {
   avatar_url: String;
   url: String;
   html_url: String;
+  name: String;
 }
 
-export default function Home() {
+export default function Home({}) {
   const [user, setUser] = useState<User>();
-  const [formUser, setFormUser] = useState();
 
-  var UserName = 'lucasmontano';
+  var UserName = 'filipedeschamps';
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function loadUser() {
@@ -33,10 +37,13 @@ export default function Home() {
     Linking.openURL(`${user?.html_url}`);
   }
 
+  function Navigate() {
+    navigation.navigate('Perfil');
+  }
+
   return (
     <>
       <StatusBar />
-
       <View style={styles.container}>
         <View style={styles.Banner}>
           <View>
@@ -55,7 +62,7 @@ export default function Home() {
           <TextInput placeholder="  Search here" style={styles.TextInput} />
         </View>
         <View style={styles.Main}>
-          <View style={styles.repoView}>
+          <RectButton onPress={Navigate} style={styles.repoView}>
             <View style={styles.AvatarIMG}>
               <Image
                 source={{ uri: `${user?.avatar_url}` }}
@@ -82,7 +89,7 @@ export default function Home() {
                 <Text onPress={OpenPerfil}>Access repository</Text>
               </View>
             </View>
-          </View>
+          </RectButton>
         </View>
       </View>
     </>
